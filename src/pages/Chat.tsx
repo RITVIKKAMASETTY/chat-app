@@ -1,12 +1,10 @@
-import React from 'react'
-import type App from '../App'
-import AppLayout from '../components/layout/AppLayout'
+import React from "react";
+import AppLayout from "../components/layout/AppLayout";
+import { useParams } from "react-router-dom";
+
 function Chat() {
-  return (
-    <div>
-      chat
-    </div>
-  )
+  const { chatId } = useParams();
+  return <div>Now chatting in Chat ID: {chatId}</div>;
 }
-const wrappedchat=AppLayout()(Chat);
-export default wrappedchat;
+
+export default AppLayout(Chat);
