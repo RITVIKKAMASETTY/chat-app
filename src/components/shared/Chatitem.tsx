@@ -2,7 +2,8 @@ import React, { memo } from "react";
 import { Link } from "../designs/StyledComponents";
 import { Box, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-
+import Avatarcard from "../shared/Avtarcard";
+// const avatar="https://picsum.photos/200"
 const ChatItem = ({
   avatar = [],
   name,
@@ -40,7 +41,7 @@ const ChatItem = ({
         }}
       >
         {/* You can add avatar here later if needed */}
-        {/* <AvatarCard avatar={avatar} /> */}
+        <Avatarcard avatar={avatar} />
 
         <Stack>
           <Typography fontWeight={600}>{name}</Typography>

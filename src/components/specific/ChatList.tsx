@@ -27,7 +27,7 @@ const ChatList = ({
 
         return (
           <ChatItem
-            key={_id}
+            key={_id} 
             index={index}
             newMessageAlert={newMessageAlert}
             isOnline={isOnline}

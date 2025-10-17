@@ -4,36 +4,40 @@ import Header from "./Header";
 import Title from "../shared/Title";
 import ChatList from "../specific/ChatList";
 import { useParams } from "react-router-dom";
+import Profile from "../specific/Profile";
 
 const AppLayout = (WrappedComponent: React.ComponentType<any>) => {
-  // ✅ Return a new functional component that can safely use hooks
+
   const HOC = (props: any) => {
-    const { chatId } = useParams(); // ✅ Valid hook usage
+    const { chatId } = useParams();
 
     const sampleChats = [
       {
         _id: 1,
         name: "Chat 1",
-        avatar: [],
+        avatar: ["https://picsum.photos/200"],
         groupChat: false,
         members: [{ _id: 1 }, { _id: 2 }],
       },
       {
         _id: 2,
         name: "Chat 2",
-        avatar: [],
+        avatar: ["https://picsum.photos/200"],
         groupChat: true,
         members: [{ _id: 2 }, { _id: 3 }],
       },
       {
         _id: 3,
         name: "Chat 3",
-        avatar: [],
+        avatar: ["https://picsum.photos/200","https://picsum.photos/200","https://picsum.photos/200","https://picsum.photos/200"],
         groupChat: false,
         members: [{ _id: 1 }, { _id: 3 }],
       },
     ];
-
+    function handleDeleteChat(e,_id,groupChat){
+  e.preventDefault();
+  console.log(`Delete chat with ID: ${_id}, Group Chat: ${groupChat}`);
+}
     return (
       <>
         <Title />
@@ -67,7 +71,7 @@ const AppLayout = (WrappedComponent: React.ComponentType<any>) => {
                 { chatId: 2, count: 2 },
               ]}
               onlineUsers={[1, 3]}
-              handleDeleteChat={() => {}}
+              handleDeleteChat={handleDeleteChat}
             />
           </Box>
 
@@ -93,13 +97,13 @@ const AppLayout = (WrappedComponent: React.ComponentType<any>) => {
               flex: { xs: "0 0 0%", sm: "0 0 0%", md: "0 0 0%", lg: "0 0 33.333%" },
               width: { xs: "0%", sm: "0%", md: "0%", lg: "33.333%" },
               display: { xs: "none", sm: "none", md: "none", lg: "flex" },
-              bgcolor: "#dcdcdc",
+              bgcolor: "#17181bff",
               alignItems: "center",
               justifyContent: "center",
               overflow: "auto",
             }}
           >
-            Right Panel
+           <Profile user={{ name: "Siddharth", avatar: ["https://picsum.photos/200"], bio: "Hello, I'm Siddharth!", username: "siddharth", createdAt: new Date() }} />
           </Box>
         </Box>
       </>

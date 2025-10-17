@@ -10,6 +10,8 @@ createRoot(document.getElementById('root')!).render(
       <title>CHAT APP</title>
       <meta name="description" content="My App description" />
     </Helmet>
+   <div onContextMenu={e=>e.preventDefault()}>
     <App />
+    </div>
   </StrictMode>,
 )
