@@ -9,6 +9,7 @@ import Profile from "../specific/Profile";
 const AppLayout = (WrappedComponent: React.ComponentType<any>) => {
 
   const HOC = (props: any) => {
+    console.log("AppLayout props:", props);
     const { chatId } = useParams();
 
     const sampleChats = [

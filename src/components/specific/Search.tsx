@@ -16,7 +16,7 @@ import React, { useEffect, useState } from "react";
 //   useSendFriendRequestMutation,
 // } from "../../redux/api/api";
 // import { setIsSearch } from "../../redux/reducers/misc";
-// import UserItem from "../shared/UserItem";
+import UserItem from "../shared/UserItem"
 
 const Search = () => {
   const sampleusers=[
@@ -29,46 +29,44 @@ const Search = () => {
     _id:3,name:"User Three",avatar:["https://picsum.photos/200"]
   } 
   ]
-  const { isSearch } = useSelector((state) => state.misc);
+  // const { isSearch } = useSelector((state) => state.misc);
 
-  const [searchUser] = useLazySearchUserQuery();
+  // const [searchUser] = useLazySearchUserQuery();
 
-  const [sendFriendRequest, isLoadingSendFriendRequest] = useAsyncMutation(
-    useSendFriendRequestMutation
-  );
+  // const [sendFriendRequest, isLoadingSendFriendRequest] = useAsyncMutation(
+  //   useSendFriendRequestMutation
+  // );
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const search = useInputValidation("");
+  // const search = useInputValidation("");
 
   const [users, setUsers] = useState(sampleusers);
 
-  const addFriendHandler = async (id) => {
-    await sendFriendRequest("Sending friend request...", { userId: id });
-  };
+  // const addFriendHandler = async (id) => {
+  //   await sendFriendRequest("Sending friend request...", { userId: id });
+  // };
 
-  const searchCloseHandler = () => dispatch(setIsSearch(false));
+  // const searchCloseHandler = () => dispatch(setIsSearch(false));
 
-  useEffect(() => {
-    const timeOutId = setTimeout(() => {
-      searchUser(search.value)
-        .then(({ data }) => setUsers(data.users))
-        .catch((e) => console.log(e));
-    }, 1000);
+  // useEffect(() => {
+  //   const timeOutId = setTimeout(() => {
+  //     searchUser(search.value)
+  //       .then(({ data }) => setUsers(data.users))
+  //       .catch((e) => console.log(e));
+  //   }, 1000);
 
-    return () => {
-      clearTimeout(timeOutId);
-    };
-  }, [search.value]);
+  //   return () => {
+  //     clearTimeout(timeOutId);
+  //   };
+  // }, [search.value]);
 
   return (
-    <Dialog open={isSearch} onClose={searchCloseHandler}>
+    <Dialog open={true}>
       <Stack p={"2rem"} direction={"column"} width={"25rem"}>
         <DialogTitle textAlign={"center"}>Find People</DialogTitle>
         <TextField
           label=""
-          value={search.value}
-          onChange={search.changeHandler}
           variant="outlined"
           size="small"
           InputProps={{
@@ -85,8 +83,8 @@ const Search = () => {
             <UserItem
               user={i}
               key={i._id}
-              handler={addFriendHandler}
-              handlerIsLoading={isLoadingSendFriendRequest}
+              // handler={addFriendHandler}
+              // handlerIsLoading={isLoadingSendFriendRequest}
             />
           ))}
         </List>
